@@ -27,16 +27,18 @@ client.on("ready", async () => {
 
 // Event listener for messages
 client.on("message", async (msg) => {
+  const messageBody = msg.body.toLocaleLowerCase();
+
   try {
-    if (msg.body === "!ping") {
+    if (messageBody === "!ping") {
       msg.reply("pong");
-    } else if (msg.body.includes("assalamualaikum")) {
+    } else if (messageBody.includes("assalamualaikum")) {
       msg.reply("waalaikumussalam");
-    } else if (msg.body === "!randomimage") {
+    } else if (messageBody === "!randomimage") {
       sendRandomImage(msg);
-    } else if (msg.body.startsWith("!ask")) {
+    } else if (messageBody.startsWith("!ask")) {
       sendIaskQuestionResponse(msg);
-    } else if (msg.body === "!whatanime" && msg.hasMedia) {
+    } else if (messageBody === "!whatanime" && msg.hasMedia) {
       searchForAnime(msg);
     }
   } catch (error) {
